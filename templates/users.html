@@ -10,8 +10,8 @@
 		{% endif %}
 	{% endwith %}
 <form action='#' method='POST'>
-	<p>New User Name:</p>
-	<input type="text" name="name", placeholder="Enter User Name"/>
+	<p>New Username:</p>
+	<input type="text" name="name" value="{{user if user}}" placeholder="Enter Username"/>
 	<input type="submit" value='submit'/>
 </form>
 {% endblock %}

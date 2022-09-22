@@ -14,9 +14,10 @@
 	{% for item in values %}
 		{% if item.status == 0 %}
 		<p>Bug Title: {{item.title}}</p>
-		<p>Status: {{'Closed'}}</p>
+		<!--<p>Status: {{'Closed'}}</p>
+		<p>Assigned to: {{item.user}}</p>
 		<p>Opened: {{item.opened}}</p>
-		<p>Details: {{item.details}}</p>
+		<p>Details: {{item.details}}</p>-->
 		<p> - - - - - - - - - - - </p>
 		{% endif %}
 	{% endfor %}

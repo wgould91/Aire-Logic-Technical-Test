@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}Open Bugs{% endblock %}
+{% block title %}Open Bug Details{% endblock %}
 {% block content %}
 <h1>Testing the Open Details Bug Page</h1>
 	{% with messages = get_flashed_messages()%}
@@ -15,6 +15,7 @@
 		{% if item.status == 1 %}
 		<p>Bug Title: {{item.title}}</p>
 		<p>Status: {{'Open'}}</p>
+		<p>Assigned to: {{item.user}}</p>
 		<p>Opened: {{item.opened}}</p>
 		<p>Details: {{item.details}}</p>
 		<p> - - - - - - - - - - - </p>

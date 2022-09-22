@@ -11,12 +11,30 @@
 		{% endif %}
 	{% endwith %}
 
+	{% if description %}
+		<p>Bug Title: {{description.title}}</p>
+		{% if description.status == 1 %}
+			<p>Status: {{'Open'}}</p>
+			<p>Assigned to: {{description.user}}</p>
+			<p>Opened: {{description.opened}}</p>
+			<p>Details: {{description.details}}</p>
+		{% elif description.status == 0%}
+			<p>Status: {{'Closed, Open Bug Report to Read'}}</p>
+		{% endif%}
+		<p> - - - - - - - - - - - </p>
+	{% endif %}
+
+<form action='#' method='POST'>
+	<p>Investigate Open Bug Reports:</p>
+	<input type="text" name="bugTitle", placeholder="Enter Bug Title" value ="{{title if title}}"/>
+	<input type="submit" value='submit'/>
+</form>
+
+	<p></p>
+	<p> - - - - - Open Bug Reports - - - - - - </p>
 	{% for item in values %}
 		{% if item.status == 1 %}
 		<p>Bug Title: {{item.title}}</p>
-		<p>Status: {{'Open'}}</p>
-		<p>Assigned to: {{item.user}}</p>
-		<p> - - - - - - - - - - - </p>
 		{% endif %}
 	{% endfor %}
 {% endblock %}

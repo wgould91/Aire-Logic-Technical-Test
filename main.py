@@ -19,11 +19,11 @@ db = SQLAlchemy(app)
 class Users(db.Model):
 	_id = db.Column('id', db.Integer, primary_key = True)
 	name = db.Column('name', db.String(100))
-	userid = db.Column('userid', db.String(100))
+	#userid = db.Column('userid', db.String(100))
 
-	def __init__(self, name, userid):
+	def __init__(self, name):
 		self.name = name
-		self.userid = userid
+		#self.userid = userid
 
 class Bugs(db.Model):
 	__bind_key__='bugs'
@@ -50,77 +50,125 @@ def home():
 def bugReporter():
 	if request.method == 'POST':
 
-		title = request.form['bugTitle']
-		details = request.form['bugDetails']
+		title = request.form['bugTitle'] or None
+		details = request.form['bugDetails'] or None
 		user = request.form['name'] or None
 
+		if title == None:
+			flash('Bug Must Be Given A Title!', 'info')
+			return render_template('reporter.html')
+
+		if details == None:
+			flash('A Bug Description Must Also Be Provided!', 'info')
+			return render_template('reporter.html')
+
 		session["bugTitle"] = title
+		session['bugDetails'] = details
 
-		query = Users.query.filter_by(name=user).first()
 		bugquery = Bugs.query.filter_by(title=title).first()
+		query = Users.query.filter_by(name=user).first()
 
-		if query:
-			
-			if bugquery:
-				flash('Bug Title Already Exists!', 'warning')
-				return render_template('reporter.html', values = user)
+		if bugquery:
+			flash('Bug Title Already Exists!', 'warning')
+			return render_template('reporter.html', values = user)
 
-			else:
+		else:
+			if query or user == None:
 				status = 1 # 1 == Open
 				opened = datetime.now()
 				bug = Bugs(title, opened, status, details, user)
 				db.session.add(bug)
 				db.session.commit()
 
-				flash('New Bug Added to Database')
-				return render_template('viewbugs.html', values = Bugs.query.all())
-		else:
-			flash('User does not exist!')
-			return render_template('reporter.html')
+				flash('New Bug {} Added to Database'.format(title))
+				return render_template('viewbugs.html')
+
+			else:
+				flash('User does not exist!')
+				return render_template('reporter.html')
 
 	return render_template('reporter.html')
 
 @app.route('/updatebug', methods = ['GET', 'POST'])
-def closeBug():
+def updateBug():
 	if request.method == 'POST':
 
-		title = request.form['bugTitle']
-		status = request.form['status']
+		title = request.form['bugTitle'] or None
+		status = request.form['status'] or None
+		user = request.form['name']
+
+		if title == None:
+			flash('You Must Input A Bug Title To Update!', 'info')
+			return render_template('updatebug.html')
+		
 		session['bugTitle'] = title
-		session['status'] = status
 
 		bugquery = Bugs.query.filter_by(title=title).first()
 
-		if bugquery:	
-			if status == 'Open':
-				bugquery.status = 1
-				db.session.commit()
-				flash('{} Has Been Reopened'.format(title))
-				return render_template('viewbugs.html', values = Bugs.query.all())
+		if user:
+			query = Users.query.filter_by(name=user).first()
 
-			elif status == 'Close':
-				bugquery.status = 0
-				db.session.commit()
-				flash('{} Has Been Closed'.format(title))
-				return render_template('viewbugs.html', values = Bugs.query.all())
+			if not query:
+				flash('User {} Does Not Exist, Create User First!'.format(user), 'info')
+				return render_template('users.html', user=user)
 
-			else:
-				flash("Incorrect Syntax, type 'Open' or 'Close' to change the bug status")
-				return render_template('reporter.html', values = title)
+		if bugquery:
+			if status:					
+				if status == 'Open':
+					bugquery.status = 1
+
+				elif status == 'Close':
+					bugquery.status = 0
+					db.session.commit()
+					flash('{} Has Been Closed'.format(title))
+					return render_template('viewbugsclosed.html', values = Bugs.query.all())
+
+				else:
+					flash("Incorrect Syntax, type 'Open' or 'Close' to change the bug status")
+					return render_template('updatebug.html', title=title)
+
+			elif not status:
+				if bugquery.status == 0:
+					flash("{} is closed, you must reopen the bug report to edit!".format(title))
+					return render_template('updatebug.html', title=title)
+
+			if user:
+				query
+				bugquery.user = user
+
+			db.session.commit()
+			flash('{} Has Been Updated'.format(title))
+			return render_template('viewbugs.html', values = Bugs.query.all())
+
 
 		else:
 			flash('Bug Does Not Yet Exist!', 'warning')
-			return render_template('reporter.html', values = title)
+			return render_template('reporter.html', title = title)
 
 	return render_template('updatebug.html')
 
-@app.route('/viewbugs', methods = ['GET'])
+@app.route('/viewbugs', methods = ['GET', 'POST'])
 def openBugs():
-	return render_template('viewbugs.html',  values = Bugs.query.filter_by(status=1).all())
+	if request.method == 'POST':
+		title = request.form['bugTitle'] or None
 
-@app.route('/viewbugsdetails', methods = ['GET'])
-def openBugsDetails():
-	return render_template('viewbugsdetails.html',  values = Bugs.query.filter_by(status=1).all())
+		if title == None:
+			flash('You Must Input A Bug Title!', 'info')
+			return render_template('viewbugs.html', values = Bugs.query.filter_by(status=1).all())
+
+		bugquery = Bugs.query.filter_by(title=title).first()
+
+		if bugquery:
+			return render_template('viewbugs.html', description = bugquery, values = Bugs.query.filter_by(status=1).all())
+		else:
+			flash('Bug Does Not Yet Exist!', 'warning')
+			return render_template('reporter.html', title = title)
+	else:
+		return render_template('viewbugs.html',  values = Bugs.query.filter_by(status=1).all())
+
+#@app.route('/viewbugsdetails', methods = ['GET'])
+#def openBugsDetails():
+#	return render_template('viewbugsdetails.html',  values = Bugs.query.filter_by(status=1).all())
 
 @app.route('/viewbugsclosed', methods = ['GET'])
 def closedBugs():
@@ -130,7 +178,7 @@ def closedBugs():
 def userBase():
 	if request.method == 'POST':
 		
-		user = request.form['name']
+		user = request.form['name'] or None
 		session["user"] = user
 
 		query = Users.query.filter_by(name=user).first()
@@ -139,14 +187,17 @@ def userBase():
 			flash('User Already Exists!', 'warning')
 			return render_template('users.html')
 
-		else:
-			randomid = ''.join(random.choice(string.ascii_lowercase + string.digits) for _ in range(6))
-			usr = Users(user, randomid)
+		if user:
+			#randomid = ''.join(random.choice(string.ascii_lowercase + string.digits) for _ in range(6))
+			usr = Users(user)
 			db.session.add(usr)
 			db.session.commit()
-
 			flash('User Added to Database')
 			return render_template('viewusers.html', values = Users.query.all())
+		
+		elif not user:
+			flash('You Must Include A Username')
+			return render_template('users.html')
 
 	else:
 		return render_template('users.html')
@@ -154,25 +205,35 @@ def userBase():
 @app.route('/updateuser', methods = ['GET', 'POST'])
 def updateUser():
 	if request.method == 'POST':
-		user = request.form['name']
-		newuser = request.form['newname']
-		#delete = request.form['delete'] or None
+		user = request.form['name'] or None
+		newuser = request.form['newname'] or None
+
+		if user == None:
+			flash('A Username Must Be Provided', 'info')
+			return render_template('updateuser.html')
+
+		if newuser == None:
+			flash('A New Username Must Be Provided', 'info')
+			return render_template('updateuser.html')			
 
 		query = Users.query.filter_by(name=user).first()
 		newquery = Users.query.filter_by(name=newuser).first()
 
 		if query:
 			if newquery:
-				flash('New Username: {} already in use!'.format(newuser), 'info')
+				flash('Username {} already in use!'.format(newuser), 'info')
 				return	render_template('updateuser.html')
 			else:
 				query.name = newuser
+				bugquery = Bugs.query.filter_by(user=user).all()
+				for item in bugquery:
+					item.user = newuser
 				db.session.commit()
 				flash('User Details Updated!', 'info')
 				return	render_template('viewusers.html', values = Users.query.all())
 		
 		else:
-			flash('User not found in database', 'info')
+			flash('User {} not found in database'.format(user), 'info')
 			return render_template('updateuser.html')
 
 	else:
