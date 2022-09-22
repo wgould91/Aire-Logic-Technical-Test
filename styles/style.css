@@ -1,0 +1,6 @@
+body{color:#00FF7F;}
+
+#content1::after{
+    content: "\a";
+    white-space: pre;
+}

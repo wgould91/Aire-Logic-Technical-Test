@@ -2,4 +2,19 @@
 {% block title %}Bug Reporter{% endblock %}
 {% block content %}
 <h1>Testing the Bug Reporter Page</h1>
+	{% with messages = get_flashed_messages()%}
+		{% if messages %}
+			{% for msg in messages %}
+				<p>{{msg}}</p>
+			{% endfor %}
+		{% endif %}
+	{% endwith %}
+	<form action='#' method='POST'>
+		<p>New Bug Title:</p>
+		<input type="text" name="bugTitle", placeholder="Enter New Bug Title"/>
+		<input type="text" name="name", placeholder="Assign User (optional)", value="{{user if user}}"/>
+		<p></p>
+		<input type="text" name="bugDetails", placeholder="Enter Bug Details" />
+		<input type="submit" value='submit'/>
+	</form>
 {% endblock %}
