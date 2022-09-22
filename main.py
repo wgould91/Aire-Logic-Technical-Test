@@ -11,7 +11,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.sqlite3'
 app.config['SQLALCHEMY_BINDS'] = {
 	'bugs': 'sqlite:///bugs.sqlite3'
 }
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 app.permanent_session_lifetime = timedelta(minutes=5)
 
 db = SQLAlchemy(app)
@@ -81,7 +81,7 @@ def bugReporter():
 				db.session.commit()
 
 				flash('New Bug {} Added to Database'.format(title))
-				return render_template('viewbugs.html')
+				return redirect(url_for('openBugs'))
 
 			else:
 				flash('User does not exist!')
@@ -138,7 +138,7 @@ def updateBug():
 
 			db.session.commit()
 			flash('{} Has Been Updated'.format(title))
-			return render_template('viewbugs.html', values = Bugs.query.all())
+			return redirect(url_for('openBugs'))
 
 
 		else:

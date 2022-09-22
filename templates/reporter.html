@@ -11,10 +11,10 @@
 	{% endwith %}
 	<form action='#' method='POST'>
 		<p>New Bug Title:</p>
-		<input type="text" name="bugTitle", placeholder="Enter New Bug Title", value="{{title if title}}" />
-		<input type="text" name="name", placeholder="Assign User (optional)", value="{{user if user}}"/>
+		<input type="text" name="bugTitle" placeholder="Enter New Bug Title" value="{{title if title}}"/>
+		<input type="text" name="name" placeholder="Assign User (optional)" value="{{user if user}}"/>
 		<p></p>
-		<input type="text" name="bugDetails", placeholder="Enter Bug Details" />
+		<input type="text" name="bugDetails" placeholder="Enter Bug Details"/>
 		<input type="submit" value='submit'/>
 	</form>
 {% endblock %}
