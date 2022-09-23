@@ -20,7 +20,7 @@ To launch the API navigate to the directory in your commande terminal and run:
 
 The resultant output should be similar to:
 
-![]()
+![](https://github.com/wgould91/Aire-Logic-Technical-Test/blob/main/Run%20main.png)
 
 The API page should then load in your web browser with the following link:
 
