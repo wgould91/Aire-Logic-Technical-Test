@@ -21,7 +21,7 @@ pip install flask _sqlalchemy
 
 ## Launch the API
 
-To launch the API navigate to the directory in your commande terminal and run:
+To launch the API navigate to the directory in your command terminal and run:
 
 `python main.py`
 
@@ -35,7 +35,7 @@ http://127.0.0.1:5500/
 
 ## Navigation
 
-All functions can be made via the Toolbar at the Top of the API
+All functions can be made via the toolbar at the top of the API
 
 ![](https://github.com/wgould91/Aire-Logic-Technical-Test/blob/main/Nav%20Bar.png)
 
@@ -50,7 +50,7 @@ All functions can be made via the Toolbar at the Top of the API
 
 ### Bug reporter
 
-Submissions must be made to both the **Bug Title** and **Bug Details** entry forms
+Submissions must be made to both the **Bug Title** and **Bug Details** entry forms.
 
 ### Bug Updater
 
@@ -62,11 +62,11 @@ N.B. You cannot update a closed bug report, you must open the bug report to do t
 
 Lists all open bug report titles.
 
-Submit an open title to the **Enter Bug Title** Box to view the bug report description.
+Submit an open title to the **Enter Bug Title** Bbx to view the bug report description.
 
 ### Closed Bugs
 
-All closed bugs are listed here for easy of finding, should they need t be reopened.
+All closed bugs are listed here for ease of viewing, should they need to be reopened.
 
 ### New Users
 
