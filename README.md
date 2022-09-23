@@ -12,6 +12,13 @@ pip install flask
 pip install flask _sqlalchemy
 ```
 
+### Dependencies
+
+- Anaconda: Version 2022.05
+- Python: Version 3.9.12
+- flask: Version 1.1.2
+- flask_sqlalchemy: Version 2.5.1
+
 ## Launch the API
 
 To launch the API navigate to the directory in your commande terminal and run:
