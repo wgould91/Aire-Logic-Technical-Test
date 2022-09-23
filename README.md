@@ -9,7 +9,7 @@ or alternatively in the command line:
 ```
 pip install flask
 
-pip install flask _sqlalchemy
+pip install flask_sqlalchemy
 ```
 
 ### Dependencies
