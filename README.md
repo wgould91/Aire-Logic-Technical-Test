@@ -74,7 +74,7 @@ Enter a new username into the **Enter Username** box to add the new user to the 
 
 ### Update Users
 
-To alter an existing username include a current username in the **Enter Username** box, then include the new username in the **Update user details** box.
+To alter an existing username include a current username in the **Enter Username** box, then include the new username in the **Update user details** box. The new username will be updated to all bug report forms.
 
 N.B. A username cannot be updated to an already existing username.
 
