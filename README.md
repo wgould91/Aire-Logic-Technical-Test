@@ -11,6 +11,21 @@ pip install flask
 
 pip install flask _sqlalchemy
 ```
+
+### Launch the API
+
+To launch the API navigate to the directory in your commande terminal and run:
+
+`python main.py`
+
+The resultant output should be similar to:
+
+![]()
+
+The API page should then load in your web browser with the following link:
+
+http://127.0.0.1:5500/
+
 ### Navigation
 
 All functions can be made via the Toolbar at the Top of the API
@@ -25,3 +40,7 @@ All functions can be made via the Toolbar at the Top of the API
 - New Users - Submit a new username
 - Update Users - Alter the username of an existing user
 - Users - See the list of available users registered to the system
+
+### Bug reporter
+
+Submissions must be made to both the **Bug Title** and **Bug Details** Entry forms
