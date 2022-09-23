@@ -5,7 +5,7 @@ An example API for the submission of Bug Reports and assigning them to users.
 
 To run this API you must first have `flask` and `flask_sqlalchemy` installed, these can be installed in the command line by running the file `install.bat`
 
-or alternatively in the command terminal:
+or alternatively in the command line:
 ```
 pip install flask
 
