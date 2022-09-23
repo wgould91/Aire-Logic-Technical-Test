@@ -49,7 +49,15 @@ Submissions must be made to both the **Bug Title** and **Bug Details** entry for
 
 An exisiting and *open* **Bug Title** must be included. Then you can assign a new user (the username must already exist: see Users) and/or open/close the bug report with the keywords *Open* and *Close* respectively.
 
+### Open bugs
 
+### Closed Bugs
+
+### New Users
+
+### Update Users
+
+### Users
 
 ## Future Development
 
