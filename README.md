@@ -12,9 +12,10 @@ pip install flask
 pip install flask_sqlalchemy
 ```
 
-### Dependencies
+### Version Use
 
-- Anaconda: Version 2022.05
+This was developed using the following versions:
+
 - Python: Version 3.9.12
 - flask: Version 1.1.2
 - flask_sqlalchemy: Version 2.5.1
