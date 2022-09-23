@@ -2,4 +2,59 @@
 {% block title %}Home Page{% endblock %}
 {% block content %}
 <h1>Aire-Logic-Technical-Test API Website</h1>
+
+<h2> Navigation</h2>
+
+<p>All functions can be made via the toolbar at the top of the API</p>
+
+<ul>
+	<li> Home - The Home Page </li>
+	<li> Bug Reporter - Submit a new bug report and assign it to a user (optional) </li>
+	<li> Bug Updater - Assign the bug a new user and open/close the bug report </li>
+	<li> Open Bugs - See the list of open bug reports and investigate the details of specific open reports </li>
+	<li> Closed Bugs - See a list of closed bug titles </li>
+	<li> New Users - Submit a new username </li>
+	<li> Update Users - Alter the username of an existing user </li>
+ 	<li> Users - See the list of available users registered to the system </li>
+</ul>
+
+<h3> Bug reporter </h3>
+
+Submissions must be made to both the <b>Bug Title</b> and <b>Bug Details</b> entry forms.
+
+<p></p>
+<h3> Bug Updater </h3>
+
+An exisiting and <i>open</i> <b>Bug Title</b> must be included. Then you can assign a new user in the <b>Assign User</b> box (the username must already exist: see Users) and/or open/close the bug report in the <b>Type Open or Close</b> box, with the keywords <i>Open</i> and <i>Close</i> respectively.
+
+N.B. You cannot update a closed bug report, you must open the bug report to do this.
+
+<p></p>
+<h3> Open bugs </h3>
+
+Lists all open bug report titles.
+
+Submit an open title to the <b>Enter Bug Title</b> Bbx to view the bug report description.
+
+<p></p>
+<h3> Closed Bugs </h3>
+
+All closed bugs are listed here for ease of viewing, should they need to be reopened.
+
+<p></p>
+<h3> New Users </h3>
+
+Enter a new username into the <b>Enter Username</b> box to add the new user to the database, existing usernames cannot be added a second time.
+
+<p></p>
+<h3> Update Users </h3>
+
+To alter an existing username include a current username in the <b>Enter Username</b> box, then include the new username in the <b>Update user details</b> box. The new username will be updated to all bug report forms.
+
+N.B. A username cannot be updated to an already existing username.
+
+<p></p>
+<h3> Users </h3>
+
+View all current users in the system.
 {% endblock %}
