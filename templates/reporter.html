@@ -1,20 +1,22 @@
 {% extends 'base.html' %}
 {% block title %}Bug Reporter{% endblock %}
 {% block content %}
-<h1>Testing the Bug Reporter Page</h1>
+<h1>Bug Reporter</h1>
 	{% with messages = get_flashed_messages()%}
 		{% if messages %}
 			{% for msg in messages %}
-				<p>{{msg}}</p>
+				<div class="alert alert-warning" role="alert">
+	  			<p>{{msg}}</p>
+				</div>
 			{% endfor %}
 		{% endif %}
 	{% endwith %}
 	<form action='#' method='POST'>
 		<p>New Bug Title:</p>
-		<input type="text" name="bugTitle" placeholder="Enter New Bug Title" value="{{title if title}}"/>
-		<input type="text" name="name" placeholder="Assign User (optional)" value="{{user if user}}"/>
+		<input type="text" name="bugTitle" placeholder="Enter New Bug Title" value="{{title if title}}" maxlength = "100"/>
+		<input type="text" name="name" placeholder="Assign User (optional)" value="{{user if user}}" maxlength = "100"/>
 		<p></p>
-		<input type="text" name="bugDetails" placeholder="Enter Bug Details"/>
+		<input type="text" name="bugDetails" placeholder="Enter Bug Details" maxlength = "5000"/>
 		<input type="submit" value='submit'/>
 	</form>
 {% endblock %}

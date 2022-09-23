@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
 {% block title %}Open Bugs{% endblock %}
 {% block content %}
-<h1>Testing the Closed Bug Page</h1>
+<h1>View Closed Bugs</h1>
 	{% with messages = get_flashed_messages()%}
 		{% if messages %}
 			{% for msg in messages %}
-				<p><b>{{msg}}</b></p>
+				<div class="alert alert-warning" role="alert">
+	  			<p>{{msg}}</p>
+				</div>
 				<p> - - - - - - - - - - - </p>
 			{% endfor %}
 		{% endif %}

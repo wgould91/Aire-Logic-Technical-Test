@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
 {% block title %}Open Bugs{% endblock %}
 {% block content %}
-<h1>Testing the Open Bug Page</h1>
+<h1>View Open Bugs</h1>
 	{% with messages = get_flashed_messages()%}
 		{% if messages %}
 			{% for msg in messages %}
-				<p><b>{{msg}}</b></p>
-				<p> - - - - - - - - - - - </p>
+				<div class="alert alert-warning" role="alert">
+	  			<p>{{msg}}</p>
+				</div>
 			{% endfor %}
 		{% endif %}
 	{% endwith %}
@@ -19,14 +20,15 @@
 			<p>Opened: {{description.opened}}</p>
 			<p>Details: {{description.details}}</p>
 		{% elif description.status == 0%}
-			<p>Status: {{'Closed, Open Bug Report to Read'}}</p>
+				<div class="alert alert-warning" role="alert">
+	  			<p>Status: {{'Closed, Open Bug Report to Read'}}</p>
+				</div>
 		{% endif%}
-		<p> - - - - - - - - - - - </p>
 	{% endif %}
 
 <form action='#' method='POST'>
 	<p>Investigate Open Bug Reports:</p>
-	<input type="text" name="bugTitle", placeholder="Enter Bug Title" value ="{{title if title}}"/>
+	<input type="text" name="bugTitle", placeholder="Enter Bug Title" value ="{{title if title}}" maxlength = "100"/>
 	<input type="submit" value='submit'/>
 </form>
 

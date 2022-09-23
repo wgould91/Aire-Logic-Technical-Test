@@ -1,23 +1,25 @@
 {% extends 'base.html' %}
-{% block title %}Update Bug Status{% endblock %}
+{% block title %}Update Bug Report{% endblock %}
 {% block content %}
-<h1>Testing Bug Update Page</h1>
+<h1>Update Bug Report</h1>
 	{% with messages = get_flashed_messages()%}
 		{% if messages %}
 			{% for msg in messages %}
-				<p>{{msg}}</p>
+				<div class="alert alert-warning" role="alert">
+	  			<p>{{msg}}</p>
+				</div>
 			{% endfor %}
 		{% endif %}
 	{% endwith %}
 <form action='#' method='POST'>
 	<p>Input Bug Title:</p>
-	<input type="text" name="bugTitle", placeholder="Enter Bug Title" value ="{{title if title}}"/>
+	<input type="text" name="bugTitle", placeholder="Enter Bug Title" value ="{{title if title}}" maxlength = "100"/>
 	<p></p>
 	<p> - - - - - - - - - - - </p>
 	<p>Update Bug Details:</p>
-	<input type="text" name="name", placeholder="Assign User", value="{{user if user}}"/>
+	<input type="text" name="name", placeholder="Assign User", value="{{user if user}}" maxlength = "100"/>
 	<p></p>
-	<input type="text" name="status", placeholder="Type Open or Close"/>
+	<input type="text" name="status", placeholder="Type Open or Close" maxlength = "5"/>
 	<input type="submit" value='submit'/>
 </form>
 {% endblock %}

@@ -1,9 +1,8 @@
 from flask import Flask, redirect, url_for, render_template, request, session, flash
 from datetime import datetime, timedelta
 from flask_sqlalchemy import SQLAlchemy 
-import string
-import random
-import textwrap
+#import string
+#import random
 
 app = Flask(__name__)
 app.secret_key = 'hello' # define the secret key to encrypt and decrypt the session data, it should be complicated

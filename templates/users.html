@@ -1,17 +1,19 @@
 {% extends 'base.html' %}
 {% block title %}User Page{% endblock %}
 {% block content %}
-<h1>Testing User Base</h1>
+<h1>Existing Users</h1>
 	{% with messages = get_flashed_messages()%}
 		{% if messages %}
 			{% for msg in messages %}
-				<p>{{msg}}</p>
+				<div class="alert alert-warning" role="alert">
+	  			<p>{{msg}}</p>
+				</div>
 			{% endfor %}
 		{% endif %}
 	{% endwith %}
 <form action='#' method='POST'>
 	<p>New Username:</p>
-	<input type="text" name="name" value="{{user if user}}" placeholder="Enter Username"/>
+	<input type="text" name="name" value="{{user if user}}" placeholder="Enter Username" maxlength = "100"/>
 	<input type="submit" value='submit'/>
 </form>
 {% endblock %}

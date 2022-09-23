@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
 {% block title %} View Users {% endblock %}
 {% block content %}
-<h1>Testing the View Users Page</h1>
+<h1>Existing Users</h1>
 	{% with messages = get_flashed_messages()%}
 		{% if messages %}
 			{% for msg in messages %}
-				<p>{{msg}}</p>
+				<div class="alert alert-warning" role="alert">
+	  			<p>{{msg}}</p>
+				</div>
 			{% endfor %}
 		{% endif %}
 	{% endwith %}
