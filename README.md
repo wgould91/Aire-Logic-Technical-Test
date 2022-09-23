@@ -85,3 +85,5 @@ View all current users in the system.
 ## Future Development
 
 - Use of unique ID's for users and report titles. This would allow for more traceability and allow for greater user flexibility when creating, updating and naming bug reports 
+- Increase information and logs, tracking changes and when they were submitted.
+- Include description updates
