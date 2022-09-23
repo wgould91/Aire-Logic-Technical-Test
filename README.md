@@ -1,7 +1,7 @@
 # Aire-Logic-Technical-Test
 
 An example API for the submission of Bug Reports and assigning them to users.
-### Installation
+## Installation
 
 To run this API you must first have `flask` and `flask_sqlalchemy` installed, these can be installed in the command line by running the file `install.bat`
 
@@ -12,7 +12,7 @@ pip install flask
 pip install flask _sqlalchemy
 ```
 
-### Launch the API
+## Launch the API
 
 To launch the API navigate to the directory in your commande terminal and run:
 
@@ -26,7 +26,7 @@ The API page should then load in your web browser with the following link:
 
 http://127.0.0.1:5500/
 
-### Navigation
+## Navigation
 
 All functions can be made via the Toolbar at the Top of the API
 
@@ -44,3 +44,13 @@ All functions can be made via the Toolbar at the Top of the API
 ### Bug reporter
 
 Submissions must be made to both the **Bug Title** and **Bug Details** Entry forms
+
+### Bug Updater
+
+An exisiting and * *open* * **Bug Title** must be included. Then you can assign a new user (the username must already exist) and/or open/close the bug reprot with the keywords * *Open* * and * *Close* * respectively.
+
+
+
+## Future Development
+
+- Use of unique ID's for users and report titles. This would allow for more traceability and allw for greater user flexibility when creating, updating and naming bug reports 
