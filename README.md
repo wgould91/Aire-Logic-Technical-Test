@@ -47,17 +47,33 @@ Submissions must be made to both the **Bug Title** and **Bug Details** entry for
 
 ### Bug Updater
 
-An exisiting and *open* **Bug Title** must be included. Then you can assign a new user (the username must already exist: see [Users](https://github.com/wgould91/Aire-Logic-Technical-Test/blob/main/README.md#users)) and/or open/close the bug report with the keywords *Open* and *Close* respectively.
+An exisiting and *open* **Bug Title** must be included. Then you can assign a new user in the **Assign User** box (the username must already exist: see [Users](https://github.com/wgould91/Aire-Logic-Technical-Test/blob/main/README.md#users)) and/or open/close the bug report in the **Type Open or Close** box, with the keywords *Open* and *Close* respectively.
+
+N.B. You cannot update a closed bug report, you must open the bug report to do this.
 
 ### Open bugs
 
+Lists all open bug report titles.
+
+Submit an open title to the **Enter Bug Title** Box to view the bug report description.
+
 ### Closed Bugs
+
+All closed bugs are listed here for easy of finding, should they need t be reopened.
 
 ### New Users
 
+Enter a new username into the **Enter Username** box to add the new user to the database, existing usernames cannot be added a second time.
+
 ### Update Users
 
+To alter an existing username include a current username in the **Enter Username** box, then include the new username in the **Update user details** box.
+
+N.B. A username cannot be updated to an already existing username.
+
 ### Users
+
+View all current users in the system.
 
 ## Future Development
 
