@@ -43,11 +43,11 @@ All functions can be made via the Toolbar at the Top of the API
 
 ### Bug reporter
 
-Submissions must be made to both the **Bug Title** and **Bug Details** Entry forms
+Submissions must be made to both the **Bug Title** and **Bug Details** entry forms
 
 ### Bug Updater
 
-An exisiting and *open* **Bug Title** must be included. Then you can assign a new user (the username must already exist) and/or open/close the bug report with the keywords *Open* and *Close* respectively.
+An exisiting and *open* **Bug Title** must be included. Then you can assign a new user (the username must already exist: see Users) and/or open/close the bug report with the keywords *Open* and *Close* respectively.
 
 
 
